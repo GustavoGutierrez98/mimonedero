@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
-        title:const Text('My App'),
+        title:const Text('Mi Monedero'),
         backgroundColor: Colors.deepOrange,
       ),
       body: 

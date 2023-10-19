@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'auth_page.dart';
 import 'package:mimonedero/models/pantalla_principal.dart';
 import 'package:mimonedero/utils.dart';
+import 'package:mimonedero/database/db.dart';
+
 Future main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
+    final balanceDatabase = BalanceDatabase.instance;
     runApp(MyApp());
 }
 final navigatorKey = GlobalKey<NavigatorState>();

@@ -10,6 +10,25 @@ class IngresoDinero extends StatelessWidget {
   }
 }
 
+class Balance {
+  final int? id;
+  final double amount;
+  final String date;
+
+  Balance({
+    this.id,
+    required this.amount,
+    required this.date,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'amount': amount,
+      'date': date,
+    };
+  }
+}
+
 class MiCartera extends StatefulWidget {
   @override
   _MiCarteraState createState() => _MiCarteraState();

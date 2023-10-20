@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'balance_view.dart';
 
 class IngresoDinero extends StatelessWidget {
   @override
@@ -102,8 +103,11 @@ class _MiCarteraState extends State<MiCartera> {
               },
               child: Text('Depositar Dinero'),
             ),
+            
           ],
+          
         ),
+        
       ),
     );
   }

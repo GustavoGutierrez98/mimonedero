@@ -11,26 +11,32 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(
+    int index,
+    /*String tabItem*/
+  ) {
     setState(() {
       _selectedIndex = index;
-     if (index == 0) {
-      // Si se selecciona el botón "home", navega a la página Ingreso
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-    } else if (index == 1) {
-      // Si se selecciona el botón "balance", navega a la página Configuracion
-      Navigator.push(context, MaterialPageRoute(builder: (context) => IngresoDinero()));
-    }else if (index == 2) {
-      // Si se selecciona el botón "balance", navega a la página Configuracion
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Perfil()));
-    }
+      if (index == 0) {
+        // Si se selecciona el botón "home", navega a la página Ingreso
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      } else if (index == 1) {
+        // Si se selecciona el botón "balance", navega a la página Configuracion
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => IngresoDinero()));
+      } else if (index == 2) {
+        // Si se selecciona el botón "balance", navega a la página Configuracion
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Perfil()));
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: <BottomNavigationBarItem>[
+      items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Inicio',

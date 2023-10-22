@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mimonedero/models/filtro_numerico.dart';
 import 'balance_view.dart';
 
 class IngresoDinero extends StatelessWidget {
@@ -75,6 +76,7 @@ class _MiCarteraState extends State<MiCartera> {
                     return AlertDialog(
                       title: Text('Depositar Dinero'),
                       content: TextField(
+                        inputFormatters: [MyFilter()],
                         keyboardType: TextInputType.number,
                         onChanged: (value) {
                           amount = double.tryParse(value) ?? 0.0;
@@ -103,11 +105,8 @@ class _MiCarteraState extends State<MiCartera> {
               },
               child: Text('Depositar Dinero'),
             ),
-            
           ],
-          
         ),
-        
       ),
     );
   }

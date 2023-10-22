@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mimonedero/models/filtro_numerico.dart';
 import 'balance_view.dart';
@@ -105,9 +106,25 @@ class _MiCarteraState extends State<MiCartera> {
               },
               child: Text('Depositar Dinero'),
             ),
+            //Aquí sí funciona, lmao. El widtet de alineación no funciona porque está dentro de una columna, no al final del Scaffold
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(50),
+                ),
+                icon: const Icon(Icons.lock_open, size: 32),
+                label: const Text(
+                  'Salir',
+                  style: TextStyle(fontSize: 24),
+                ),
+                onPressed: () => FirebaseAuth.instance.signOut(),
+              ),
+            ),
           ],
         ),
       ),
+      //Antes que termine el Scaffold, irá el botón de salida
     );
   }
 }

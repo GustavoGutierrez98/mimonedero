@@ -43,7 +43,7 @@ class _NavBarState extends State<NavBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.money),
-          label: 'Balance',
+          label: 'Transacciones',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),

@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
               ),
               icon: const Icon(Icons.lock_open, size: 32),
               label: const Text(
-                'Salir',
+                'Cerrar sesión',
                 style: TextStyle(fontSize: 24),
               ),
               onPressed: () => FirebaseAuth.instance.signOut(),

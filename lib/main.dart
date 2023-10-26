@@ -48,7 +48,8 @@ class MainPage extends StatelessWidget {
             } else if (snapshot.hasError) {
               return const Center(child: Text('Algo salio mal!'));
             } else if (snapshot.hasData) {
-              return IngresoDinero();
+             // return IngresoDinero();
+             return HomePage();
             } else {
               return const AuthPage();
             }

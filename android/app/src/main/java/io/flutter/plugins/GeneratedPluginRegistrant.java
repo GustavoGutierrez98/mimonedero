@@ -40,5 +40,10 @@ public final class GeneratedPluginRegistrant {
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin sqflite, com.tekartik.sqflite.SqflitePlugin", e);
     }
+    try {
+      flutterEngine.getPlugins().add(new com.testfairy.flutter.TestfairyFlutterPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin testfairy_flutter, com.testfairy.flutter.TestfairyFlutterPlugin", e);
+    }
   }
 }

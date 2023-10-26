@@ -333,6 +333,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
+  testfairy_flutter:
+    dependency: "direct main"
+    description:
+      name: testfairy_flutter
+      sha256: e5aec0282c5a0ab885485646f2c546c91cfb1aea01b6821cc08fc2b562e48745
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   typed_data:
     dependency: transitive
     description:

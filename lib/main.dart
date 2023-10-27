@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mimonedero/login_widget.dart';
 import 'package:mimonedero/models/ingreso.dart';
 // ignore: unused_import
 import 'package:mimonedero/models/perfil.dart';
-import 'auth_page.dart';
 // ignore: unused_import
 import 'package:mimonedero/models/pantalla_principal.dart';
 import 'package:mimonedero/utils.dart';
@@ -51,7 +51,7 @@ class MainPage extends StatelessWidget {
              // return IngresoDinero();
              return HomePage();
             } else {
-              return const AuthPage();
+              return LoginWidget();
             }
           }));
 }

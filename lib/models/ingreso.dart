@@ -1,15 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mimonedero/models/filtro_numerico.dart';
+import 'package:mimonedero/widgets/navbar.dart';
 // ignore: unused_import
 import 'balance_view.dart';
 
+// class IngresoDinero extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Mi Monedero Virtual',
+//       home: MiCartera(),
+//     );
+//   }
+// }
 class IngresoDinero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mi Monedero Virtual',
-      home: MiCartera(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mi Monedero Virtual'),
+      ),
+      body: MiCartera(),
+      bottomNavigationBar: NavBar(),
+       floatingActionButton: ElevatedButton(
+        onPressed: () {
+          // Navegar a la vista del historial de transacciones (BalanceView)
+          Navigator.push(context, MaterialPageRoute(builder: (context) => BalanceView()));
+        },
+        child: Text('Abrir Historial de Transacciones'),
+       ),
     );
   }
 }
@@ -116,7 +136,7 @@ class _MiCarteraState extends State<MiCartera> {
                 ),
                 icon: const Icon(Icons.lock_open, size: 32),
                 label: const Text(
-                  'Salir',
+                  'Cerrar sesión',
                   style: TextStyle(fontSize: 24),
                 ),
                 onPressed: () => FirebaseAuth.instance.signOut(),

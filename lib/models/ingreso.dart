@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mimonedero/models/filtro_numerico.dart';
+import 'package:mimonedero/models/historial_trans.dart';
 import 'package:mimonedero/widgets/navbar.dart';
 // ignore: unused_import
 import 'balance_view.dart';
@@ -26,7 +27,7 @@ class IngresoDinero extends StatelessWidget {
        floatingActionButton: ElevatedButton(
         onPressed: () {
           // Navegar a la vista del historial de transacciones (BalanceView)
-          Navigator.push(context, MaterialPageRoute(builder: (context) => BalanceView()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PantallaMonedero()));
         },
         child: Text('Abrir Historial de Transacciones'),
        ),

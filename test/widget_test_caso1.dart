@@ -1,6 +1,6 @@
 //clase de origen: ingreso.dart
 // prueba comprobando el comportamiento del saldo y la funcionalidad de depósito de dinero.
-
+//
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mimonedero/models/ingreso.dart'; // Asegúrate de importar tu vista de MiCartera

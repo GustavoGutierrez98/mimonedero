@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Mi Monedero'),
         backgroundColor: Colors.deepOrange,
       ),
+      backgroundColor: const Color.fromARGB(255, 66, 65, 65),
       body: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
@@ -28,16 +29,17 @@ class HomePage extends StatelessWidget {
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50),
-              ),
-              icon: const Icon(Icons.lock_open, size: 32),
-              label: const Text(
-                'Cerrar sesión',
-                style: TextStyle(fontSize: 24),
-              ),
-              onPressed: () => FirebaseAuth.instance.signOut(),
-            ),
+  style: ElevatedButton.styleFrom(
+    primary: Colors.deepOrange, // Establecer el color de fondo a naranja
+    minimumSize: const Size.fromHeight(50),
+  ),
+  icon: const Icon(Icons.lock_open, size: 32),
+  label: const Text(
+    'Cerrar sesión',
+    style: TextStyle(fontSize: 24),
+  ),
+  onPressed: () => FirebaseAuth.instance.signOut(),
+),
           ],
         ),
       ),

@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:mimonedero/database/db.dart';
 import 'package:mimonedero/models/ingreso.dart';
+import 'package:mimonedero/widgets/navbar.dart';
 
 class BalanceView extends StatefulWidget {
+  final List<Balance> balances;
+  BalanceView({required this.balances, required double currentBalance});
   @override
-  _BalanceViewState createState() => _BalanceViewState();
-}
+  _BalanceViewState createState() => _BalanceViewState(balances: balances);
+ 
 
+}
 class _BalanceViewState extends State<BalanceView> {
-  List<Balance> _balances = [];
+  late List<Balance> _balances;
+
+  _BalanceViewState({required List<Balance> balances}) {
+    _balances = balances;
+  }
 
   @override
   void initState() {
@@ -26,6 +34,7 @@ class _BalanceViewState extends State<BalanceView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 66, 65, 65),
       appBar: AppBar(
         title: Text('Saldo Guardado'),
       ),
@@ -39,6 +48,7 @@ class _BalanceViewState extends State<BalanceView> {
           );
         },
       ),
+       bottomNavigationBar: NavBar(), // Integrar la barra de navegación NavBar
     );
   }
 }

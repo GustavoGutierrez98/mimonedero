@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mimonedero/models/historial.dart';
 import 'package:mimonedero/models/pantalla_principal.dart';
 import 'package:mimonedero/models/ingreso.dart';
-import 'package:mimonedero/models/perfil.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -11,26 +11,18 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
 
-  void _onItemTapped(
-    int index,
-    /*String tabItem*/
-  ) {
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      if (index == 0) {
-        // Si se selecciona el botón "home", navega a la página Ingreso
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
-      } else if (index == 1) {
-        // Si se selecciona el botón "balance", navega a la página Configuracion
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => IngresoDinero()));
-      } else if (index == 2) {
-        // Si se selecciona el botón "balance", navega a la página Configuracion
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Perfil()));
-      }
     });
+    // Handle navigation as before
+    if (index == 0) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+    } else if (index == 1) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => IngresoDinero()));
+    } else if (index == 2) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HistorialGeneral()));
+    }
   }
 
   @override
@@ -43,16 +35,16 @@ class _NavBarState extends State<NavBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.money),
-          label: 'Transacciones',
+          label: 'Depositar',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Perfil',
+          label: 'Historial',
         ),
       ],
       currentIndex: _selectedIndex,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.black, // Color of unselected items
+      backgroundColor: Colors.deepOrange, // Background color of the navigation bar
       onTap: _onItemTapped,
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mimonedero/database/db.dart';
-import 'package:mimonedero/models/filtro_numerico.dart';
-import 'package:mimonedero/models/historial.dart';
+import 'package:mimonedero/widgets/filtro_numerico.dart';
 import 'package:mimonedero/widgets/navbar.dart';
+import 'package:mimonedero/widgets/splash_screen.dart';
 // ignore: unused_import
 import 'balance_view.dart';
 
@@ -25,7 +25,7 @@ class IngresoDinero extends StatelessWidget {
     Navigator.push(
   context,
   MaterialPageRoute(
-    builder: (context) => BalanceView(balances: [], currentBalance: 0,),
+     builder: (context) => SplashScreen(),
   ),
 );
   },
@@ -78,11 +78,10 @@ class _MiCarteraState extends State<MiCartera> {
   }
 }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 66, 65, 65),
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

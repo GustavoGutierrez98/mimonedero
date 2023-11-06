@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:mimonedero/main.dart';
 
 class LoginWidget extends StatefulWidget {
+  const LoginWidget({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _LoginWidgetState createState() => _LoginWidgetState();
 }
 
@@ -28,14 +31,14 @@ class _LoginWidgetState extends State<LoginWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(height: 40),
-          Column(
+          const Column(
             children: [
               Icon(
                 Icons.account_balance_wallet, // Cambia el icono según tus preferencias
                 size: 48,
-                color: Colors.orange,
+                color: Colors.deepOrange,
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               Text(
                 'Mi Monedero', // Agregar el título aquí
                 style: TextStyle(
@@ -49,14 +52,14 @@ class _LoginWidgetState extends State<LoginWidget> {
           const SizedBox(height: 20),
           TextField(
             controller: emailController,
-            cursorColor: Colors.orange,
+            cursorColor: Colors.deepOrange,
             textInputAction: TextInputAction.next,
             onChanged: (text) {
               setState(() {
                 errorText = ''; // Borrar el mensaje de error al modificar el campo de correo.
               });
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Correo Electrónico',
               labelStyle: TextStyle(color: Colors.white), // Cambia el color del texto del campo de entrada
               hintStyle: TextStyle(color: Colors.white), // Cambia el color del texto de sugerencia
@@ -64,7 +67,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 borderSide: BorderSide(color: Colors.white), // Cambia el color de la línea cuando el campo está enfocado
               ),
             ),
-            style: TextStyle(color: Colors.white), // Cambia el color del texto del campo de entrada
+            style: const TextStyle(color: Colors.white), // Cambia el color del texto del campo de entrada
           ),
           const SizedBox(
             height: 4,
@@ -77,7 +80,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 errorText = ''; // Borrar el mensaje de error al modificar el campo de contraseña.
               });
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Contraseña',
               labelStyle: TextStyle(color: Colors.white), // Cambia el color del texto del campo de entrada
               hintStyle: TextStyle(color: Colors.white), // Cambia el color del texto de sugerencia
@@ -86,17 +89,16 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
             ),
             obscureText: true,
-            style: TextStyle(color: Colors.white), // Cambia el color del texto del campo de entrada
+            style: const TextStyle(color: Colors.white), // Cambia el color del texto del campo de entrada
           ),
           Text(
             errorText, // Mostrar el mensaje de error.
-            style: TextStyle(color: Colors.red),
+            style: const TextStyle(color: Colors.red),
           ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size.fromHeight(50),
-              primary: Colors.orange, // Cambia el color del botón
+              minimumSize: const Size.fromHeight(50), backgroundColor: Colors.deepOrange, // Cambia el color del botón
             ),
             icon: const Icon(Icons.lock_open, size: 32),
             label: const Text(
@@ -138,6 +140,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       email: email,
       password: password,
     );
+  // ignore: unused_catch_clause
   } on FirebaseAuthException catch (e) {
     setState(() {
       errorText = 'Correo o contraseña incorrectos';
@@ -145,6 +148,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   // Cerrar el diálogo de progreso después de intentar iniciar sesión.
+  // ignore: use_build_context_synchronously
   Navigator.of(context).pop();
 
   navigatorKey.currentState!.popUntil((route) => route.isFirst);

@@ -1,54 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:mimonedero/database/db.dart';
+import 'package:mimonedero/models/details.dart';
 import 'package:mimonedero/models/ingreso.dart';
-import 'package:mimonedero/widgets/navbar.dart';
+import 'package:mimonedero/models/pagos.dart';
 
 class BalanceView extends StatefulWidget {
   final List<Balance> balances;
   BalanceView({required this.balances, required double currentBalance});
   @override
-  _BalanceViewState createState() => _BalanceViewState(balances: balances);
+  _BalanceViewState createState() => _BalanceViewState();
  
 
 }
 class _BalanceViewState extends State<BalanceView> {
   late List<Balance> _balances;
-
-  _BalanceViewState({required List<Balance> balances}) {
-    _balances = balances;
-  }
+  late List<Payment> _payments;
 
   @override
   void initState() {
     super.initState();
-    _loadBalances();
+    _loadTransactions();
   }
 
-  Future<void> _loadBalances() async {
-    final balances = await BalanceDatabase.instance.getAllBalances();
+  Future<void> _loadTransactions() async {
+    final deposits = await BalanceDatabase.instance.getAllBalances();
+    final payments = await PaymentDatabase.instance.getAllPayments();
+
     setState(() {
-      _balances = balances;
+      _balances = deposits;
+      _payments = payments;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 66, 65, 65),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Saldo Guardado'),
+        backgroundColor: Colors.deepOrange,
+        title: Text('Saldo y Pagos'),
       ),
       body: ListView.builder(
-        itemCount: _balances.length,
-        itemBuilder: (context, index) {
-          final balance = _balances[index];
-          return ListTile(
-            title: Text('Amount: ${balance.amount}'),
-            subtitle: Text('Date: ${balance.date}'),
+  itemCount: _balances.length + _payments.length,
+  itemBuilder: (context, index) {
+    if (index < _balances.length) {
+      final balance = _balances[index];
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TransactionDetailScreen(balance),
+            ),
           );
         },
-      ),
-       bottomNavigationBar: NavBar(), // Integrar la barra de navegación NavBar
+        child: ListTile(
+          title: Text('Saldo: \$${balance.amount.toStringAsFixed(2)}',
+              style: TextStyle(color: Colors.green)),
+        ),
+      );
+    } else {
+      final payment = _payments[index - _balances.length];
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TransactionDetailScreen(payment),
+            ),
+          );
+        },
+        child: ListTile(
+          title: Text('Pago: -\$${payment.amount.toStringAsFixed(2)}',
+              style: TextStyle(color: Colors.red)),
+        ),
+      );
+    }
+  },
+),
+
     );
   }
 }

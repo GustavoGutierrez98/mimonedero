@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:mimonedero/login_widget.dart';
 import 'package:mimonedero/models/pantalla_principal.dart';
 import 'package:mimonedero/utils.dart';
-import 'package:mimonedero/database/db.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  final balanceDatabase = BalanceDatabase.instance;
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -45,9 +43,9 @@ class MainPage extends StatelessWidget {
               return const Center(child: Text('Algo salio mal!'));
             } else if (snapshot.hasData) {
              // return IngresoDinero();
-             return HomePage();
+             return const HomePage();
             } else {
-              return LoginWidget();
+              return const LoginWidget();
             }
           }));
 }
